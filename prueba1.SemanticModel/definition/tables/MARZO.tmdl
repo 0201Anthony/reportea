@@ -1,0 +1,79 @@
+table MARZO
+	lineageTag: 02ff9c9a-3a77-4e5a-aa88-90782119b77c
+
+	column Column1
+		dataType: string
+		lineageTag: 15cd8186-9e57-4dce-9bc6-f434530b5428
+		summarizeBy: none
+		sourceColumn: Column1
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column2
+		dataType: string
+		lineageTag: 1f57482d-9643-4999-a5f1-dccf22524a66
+		summarizeBy: none
+		sourceColumn: Column2
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column3
+		dataType: string
+		lineageTag: 5543515b-5fe5-46df-8fee-e025bfb2aef0
+		summarizeBy: none
+		sourceColumn: Column3
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column4
+		dataType: string
+		lineageTag: a43e32f7-c482-4e6c-a90b-f97625d85833
+		summarizeBy: none
+		sourceColumn: Column4
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column5
+		dataType: string
+		lineageTag: 32915d02-8633-4bc3-863e-9f727ff46d4a
+		summarizeBy: none
+		sourceColumn: Column5
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column6
+		dataType: string
+		lineageTag: 0e143a9e-8aa4-4851-8fc1-b75773596428
+		summarizeBy: none
+		sourceColumn: Column6
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column7
+		dataType: string
+		lineageTag: fb876105-2a34-48b9-94fa-91169d3997c7
+		summarizeBy: none
+		sourceColumn: Column7
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column8
+		dataType: string
+		lineageTag: f176c80d-cce7-4631-910a-c5ded3e12520
+		summarizeBy: none
+		sourceColumn: Column8
+
+		annotation SummarizationSetBy = Automatic
+
+	partition MARZO = m
+		mode: import
+		source =
+				let
+				    Origen = Excel.Workbook(File.Contents("C:\Disco D\Power-prueba\Resultado- TOTAL.xlsx"), null, true),
+				    MARZO_Sheet = Origen{[Item="MARZO",Kind="Sheet"]}[Data],
+				    #"Tipo cambiado" = Table.TransformColumnTypes(MARZO_Sheet,{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", type text}, {"Column5", type text}, {"Column6", type text}, {"Column7", type text}, {"Column8", type text}})
+				in
+				    #"Tipo cambiado"
+
+	annotation PBI_ResultType = Table
+

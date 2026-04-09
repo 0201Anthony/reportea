@@ -1,0 +1,81 @@
+table FEBRERO
+	lineageTag: 7655a443-2aae-4624-aedb-150108935e30
+
+	column 'Codigo de Estudiante'
+		dataType: int64
+		formatString: 0
+		lineageTag: 7509374b-084e-49a1-b24d-7d05dfd0b3ca
+		summarizeBy: sum
+		sourceColumn: Codigo de Estudiante
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Apellido Paterno'
+		dataType: string
+		lineageTag: e85b03e0-532d-4830-936e-97b485c8fc03
+		summarizeBy: none
+		sourceColumn: Apellido Paterno
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Apellido Materno'
+		dataType: string
+		lineageTag: 96631548-fc7f-41f4-8842-f0b4a4d54306
+		summarizeBy: none
+		sourceColumn: Apellido Materno
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nombres
+		dataType: string
+		lineageTag: 6f456b24-d62f-42a7-a044-4ff8923b8164
+		summarizeBy: none
+		sourceColumn: Nombres
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Apellidos y Nombres'
+		dataType: string
+		lineageTag: 2227e2b9-54d4-404f-89a5-89fb851759e1
+		summarizeBy: none
+		sourceColumn: Apellidos y Nombres
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Denominacion Grado'
+		dataType: string
+		lineageTag: 008ddd9e-e5bf-44e5-8a14-6d7ba7d3257d
+		summarizeBy: none
+		sourceColumn: Denominacion Grado
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Carrera Profesional'
+		dataType: string
+		lineageTag: 6173dbb5-a44e-4909-97d9-805144670eb4
+		summarizeBy: none
+		sourceColumn: Carrera Profesional
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tipo de Diploma'
+		dataType: string
+		lineageTag: da668578-315d-4d12-8107-035743cdb451
+		summarizeBy: none
+		sourceColumn: Tipo de Diploma
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FEBRERO = m
+		mode: import
+		source =
+				let
+				    Origen = Excel.Workbook(File.Contents("C:\Disco D\Power-prueba\Resultado- TOTAL.xlsx"), null, true),
+				    FEBRERO_Sheet = Origen{[Item="FEBRERO",Kind="Sheet"]}[Data],
+				    #"Encabezados promovidos" = Table.PromoteHeaders(FEBRERO_Sheet, [PromoteAllScalars=true]),
+				    #"Tipo cambiado" = Table.TransformColumnTypes(#"Encabezados promovidos",{{"Codigo de Estudiante", Int64.Type}, {"Apellido Paterno", type text}, {"Apellido Materno", type text}, {"Nombres", type text}, {"Apellidos y Nombres", type text}, {"Denominacion Grado", type text}, {"Carrera Profesional", type text}, {"Tipo de Diploma", type text}})
+				in
+				    #"Tipo cambiado"
+
+	annotation PBI_ResultType = Table
+

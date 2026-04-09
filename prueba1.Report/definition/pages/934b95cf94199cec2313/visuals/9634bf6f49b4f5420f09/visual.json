@@ -1,0 +1,85 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
+  "name": "9634bf6f49b4f5420f09",
+  "position": {
+    "x": 123.49955610646745,
+    "y": 39.794301412083954,
+    "z": 0,
+    "height": 579.07569641032512,
+    "width": 981.13536240138035,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "hundredPercentStackedBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ENERO"
+                    }
+                  },
+                  "Property": "Tipo de Diploma"
+                }
+              },
+              "queryRef": "ENERO.Tipo de Diploma",
+              "nativeQueryRef": "Tipo de Diploma",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ENERO"
+                        }
+                      },
+                      "Property": "Apellidos y Nombres"
+                    }
+                  },
+                  "Function": 5
+                }
+              },
+              "queryRef": "CountNonNull(ENERO.Apellidos y Nombres)",
+              "nativeQueryRef": "Recuento de Apellidos y Nombres"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "ENERO"
+                      }
+                    },
+                    "Property": "Apellidos y Nombres"
+                  }
+                },
+                "Function": 5
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

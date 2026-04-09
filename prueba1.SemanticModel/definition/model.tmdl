@@ -1,0 +1,23 @@
+model Model
+	culture: es-ES
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: es-PE
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["FEBRERO","ENERO","MARZO"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.132.1053.0 (24.08)
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table FEBRERO
+ref table DateTableTemplate_0038afc8-5046-4d32-a147-66421f296d4d
+ref table ENERO
+ref table MARZO
+
+ref cultureInfo es-ES
+
