@@ -1,16 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
-  "name": "9634bf6f49b4f5420f09",
+  "name": "8257845d37ebb5c4e36a",
   "position": {
-    "x": 123.49955610646745,
-    "y": 39.794301412083954,
-    "z": 0,
-    "height": 385.5930585101928,
-    "width": 573.58682725003769,
-    "tabOrder": 0
+    "x": 789.02494179131986,
+    "y": 86.449689274527216,
+    "z": 1,
+    "height": 579.07569641032512,
+    "width": 411.66518702155815,
+    "tabOrder": 1
   },
   "visual": {
-    "visualType": "hundredPercentStackedBarChart",
+    "visualType": "stackedAreaChart",
     "query": {
       "queryState": {
         "Category": {
@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "ENERO"
+                      "Entity": "FEBRERO"
                     }
                   },
-                  "Property": "Tipo de Diploma"
+                  "Property": "Denominacion Grado"
                 }
               },
-              "queryRef": "ENERO.Tipo de Diploma",
-              "nativeQueryRef": "Tipo de Diploma",
+              "queryRef": "FEBRERO.Denominacion Grado",
+              "nativeQueryRef": "Recuento de Denominacion Grado",
               "active": true
             }
           ]
@@ -41,17 +41,17 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "ENERO"
+                          "Entity": "FEBRERO"
                         }
                       },
-                      "Property": "Apellidos y Nombres"
+                      "Property": "Carrera Profesional"
                     }
                   },
                   "Function": 5
                 }
               },
-              "queryRef": "CountNonNull(ENERO.Apellidos y Nombres)",
-              "nativeQueryRef": "Recuento de Apellidos y Nombres"
+              "queryRef": "CountNonNull(FEBRERO.Carrera Profesional)",
+              "nativeQueryRef": "Recuento de Carrera Profesional"
             }
           ]
         }
@@ -65,10 +65,10 @@
                   "Column": {
                     "Expression": {
                       "SourceRef": {
-                        "Entity": "ENERO"
+                        "Entity": "FEBRERO"
                       }
                     },
-                    "Property": "Apellidos y Nombres"
+                    "Property": "Carrera Profesional"
                   }
                 },
                 "Function": 5
