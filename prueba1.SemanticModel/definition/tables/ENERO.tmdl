@@ -58,14 +58,6 @@ table ENERO
 
 		annotation SummarizationSetBy = Automatic
 
-	column 'Tipo de Diploma'
-		dataType: string
-		lineageTag: 9e5221b8-79cf-4fad-abac-0172597b3154
-		summarizeBy: none
-		sourceColumn: Tipo de Diploma
-
-		annotation SummarizationSetBy = Automatic
-
 	partition ENERO = m
 		mode: import
 		source =
@@ -73,9 +65,10 @@ table ENERO
 				    Origen = Excel.Workbook(File.Contents("C:\Disco D\Power-prueba\Resultado- TOTAL.xlsx"), null, true),
 				    ENERO_Sheet = Origen{[Item="ENERO",Kind="Sheet"]}[Data],
 				    #"Encabezados promovidos" = Table.PromoteHeaders(ENERO_Sheet, [PromoteAllScalars=true]),
-				    #"Tipo cambiado" = Table.TransformColumnTypes(#"Encabezados promovidos",{{"Codigo de Estudiante", Int64.Type}, {"Apellido Paterno", type text}, {"Apellido Materno", type text}, {"Nombres", type text}, {"Apellidos y Nombres", type text}, {"Denominacion Grado", type text}, {"Carrera Profesional", type text}, {"Tipo de Diploma", type text}})
+				    #"Tipo cambiado" = Table.TransformColumnTypes(#"Encabezados promovidos",{{"Codigo de Estudiante", Int64.Type}, {"Apellido Paterno", type text}, {"Apellido Materno", type text}, {"Nombres", type text}, {"Apellidos y Nombres", type text}, {"Denominacion Grado", type text}, {"Carrera Profesional", type text}, {"Tipo de Diploma", type text}}),
+				    #"Columnas quitadas" = Table.RemoveColumns(#"Tipo cambiado",{"Tipo de Diploma"})
 				in
-				    #"Tipo cambiado"
+				    #"Columnas quitadas"
 
 	annotation PBI_ResultType = Table
 
